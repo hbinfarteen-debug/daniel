@@ -75,7 +75,7 @@ export default function ResponsiveHeader() {
               alt="Daniel's Arctic Touch logo"
               width={140}
               height={40}
-              className="h-9 w-auto sm:h-10 object-contain"
+              className="h-11 w-auto sm:h-12 object-contain"
               priority
             />
           </a>
