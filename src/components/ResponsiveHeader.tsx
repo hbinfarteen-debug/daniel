@@ -1,7 +1,8 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { Snowflake, Menu, Phone } from 'lucide-react';
+import Image from 'next/image';
+import { Menu, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import MobileMenu from '@/components/MobileMenu';
 
@@ -59,15 +60,17 @@ export default function ResponsiveHeader() {
           {/* Brand */}
           <a
             href="#home"
-            className="flex items-center gap-2 transition-opacity hover:opacity-80"
+            className="flex items-center transition-opacity hover:opacity-80"
+            aria-label="Daniel's Arctic Touch - Home"
           >
-            <Snowflake className="size-6 text-arctic-ice-blue" />
-            <span className="hidden text-sm font-semibold tracking-wider text-white sm:inline-block">
-              DANIEL'S ARCTIC TOUCH
-            </span>
-            <span className="text-sm font-semibold tracking-wider text-white sm:hidden">
-              DAT
-            </span>
+            <Image
+              src="/images/logo.png"
+              alt="Daniel's Arctic Touch logo"
+              width={140}
+              height={40}
+              className="h-9 w-auto sm:h-10 object-contain"
+              priority
+            />
           </a>
 
           {/* Desktop navigation */}

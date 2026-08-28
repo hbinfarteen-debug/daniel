@@ -1,4 +1,5 @@
-import { Snowflake, Phone, Mail, MapPin } from 'lucide-react';
+import Image from 'next/image';
+import { Phone, Mail, MapPin } from 'lucide-react';
 
 const serviceLinks = [
   'Air Conditioning',
@@ -16,9 +17,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
           {/* Brand Column */}
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <Snowflake className="w-5 h-5 text-arctic-ice-blue" />
-              <span className="text-white font-semibold tracking-wider text-sm">DANIEL&apos;S ARCTIC TOUCH</span>
+            <div className="mb-4">
+              <Image
+                src="/images/logo.png"
+                alt="Daniel's Arctic Touch logo"
+                width={140}
+                height={40}
+                className="h-9 w-auto object-contain"
+              />
             </div>
             <p className="text-white/50 text-sm leading-relaxed">
               Professional refrigeration and air-conditioning solutions for homes, businesses and vehicles across Zimbabwe.

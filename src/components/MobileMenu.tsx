@@ -1,6 +1,7 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 import { X, MessageCircle, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -53,8 +54,15 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             aria-modal="true"
             aria-label="Mobile navigation menu"
           >
-            {/* Close button */}
-            <div className="flex items-center justify-end p-6">
+            {/* Logo + Close button */}
+            <div className="flex items-center justify-between p-6 pb-4">
+              <Image
+                src="/images/logo.png"
+                alt="Daniel's Arctic Touch logo"
+                width={120}
+                height={36}
+                className="h-8 w-auto object-contain"
+              />
               <button
                 onClick={onClose}
                 className="rounded-lg p-2 text-white/70 transition-colors hover:bg-white/10 hover:text-white"
