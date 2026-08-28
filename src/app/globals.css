@@ -1,0 +1,153 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* Brand Colors */
+  --color-arctic-deep-navy: #061A45;
+  --color-arctic-navy: #092B67;
+  --color-arctic-ice-blue: #168BFF;
+  --color-arctic-electric-blue: #36A9FF;
+  --color-arctic-white: #FFFFFF;
+  --color-arctic-ice-white: #F3F8FF;
+  --color-arctic-soft-blue: #DCEEFF;
+
+  /* shadcn/ui mappings */
+  --color-background: var(--arctic-ice-white);
+  --color-foreground: var(--arctic-deep-navy);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--arctic-ice-blue);
+  --color-sidebar-border: #1a3a6e;
+  --color-sidebar-accent-foreground: var(--arctic-white);
+  --color-sidebar-accent: #0d2348;
+  --color-sidebar-primary-foreground: var(--arctic-white);
+  --color-sidebar-primary: var(--arctic-ice-blue);
+  --color-sidebar-foreground: var(--arctic-white);
+  --color-sidebar: var(--arctic-deep-navy);
+  --color-chart-5: var(--arctic-soft-blue);
+  --color-chart-4: var(--arctic-electric-blue);
+  --color-chart-3: var(--arctic-ice-blue);
+  --color-chart-2: var(--arctic-navy);
+  --color-chart-1: var(--arctic-deep-navy);
+  --color-ring: var(--arctic-ice-blue);
+  --color-input: var(--arctic-soft-blue);
+  --color-border: var(--arctic-soft-blue);
+  --color-destructive: oklch(0.577 0.245 27.325);
+  --color-accent-foreground: var(--arctic-deep-navy);
+  --color-accent: var(--arctic-soft-blue);
+  --color-muted-foreground: #5a7ba8;
+  --color-muted: #e8f0fa;
+  --color-secondary-foreground: var(--arctic-deep-navy);
+  --color-secondary: var(--arctic-soft-blue);
+  --color-primary-foreground: var(--arctic-white);
+  --color-primary: var(--arctic-deep-navy);
+  --color-popover-foreground: var(--arctic-deep-navy);
+  --color-popover: var(--arctic-white);
+  --color-card-foreground: var(--arctic-deep-navy);
+  --color-card: var(--arctic-white);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --radius: 0.625rem;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom scrollbar */
+@layer base {
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--arctic-ice-white);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--arctic-navy);
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--arctic-ice-blue);
+  }
+}
+
+/* Arctic glow effect for interactive elements */
+.arctic-glow {
+  box-shadow: 0 0 20px rgba(22, 139, 255, 0.15), 0 0 40px rgba(22, 139, 255, 0.05);
+}
+
+.arctic-glow-strong {
+  box-shadow: 0 0 30px rgba(22, 139, 255, 0.25), 0 0 60px rgba(22, 139, 255, 0.1);
+}
+
+/* Frost border effect */
+.frost-border {
+  border: 1px solid rgba(22, 139, 255, 0.2);
+}
+
+/* Animated gradient background */
+@keyframes subtle-drift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.animated-drift {
+  animation: subtle-drift 20s ease infinite;
+  background-size: 200% 200%;
+}
+
+/* Ice particle float animation */
+@keyframes float-up {
+  0% { transform: translateY(0) translateX(0); opacity: 0; }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.6; }
+  100% { transform: translateY(-100vh) translateX(20px); opacity: 0; }
+}
+
+.ice-particle {
+  animation: float-up linear infinite;
+  pointer-events: none;
+}
+
+/* Pulse glow for emergency CTA */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(22, 139, 255, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(22, 139, 255, 0.6), 0 0 60px rgba(54, 169, 255, 0.3); }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Focus visible styles */
+:focus-visible {
+  outline: 2px solid var(--arctic-ice-blue);
+  outline-offset: 2px;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
