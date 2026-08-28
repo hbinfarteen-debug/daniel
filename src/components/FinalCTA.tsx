@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { Phone, MessageCircle, FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { waUrl, WA_DEFAULT_MESSAGE } from '@/lib/constants';
 
 export default function FinalCTA() {
   return (
@@ -38,7 +39,7 @@ export default function FinalCTA() {
               className="bg-[#25D366] hover:bg-[#1fb855] text-white gap-2 h-12 px-8 text-base"
               asChild
             >
-              <a href="https://wa.me/263771539643?text=Hi%20Daniel's%20Arctic%20Touch%2C%20I%20would%20like%20assistance." target="_blank" rel="noopener noreferrer">
+              <a href={waUrl(WA_DEFAULT_MESSAGE)} target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="w-5 h-5" />
                 WhatsApp Us
               </a>

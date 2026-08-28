@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef } from 'react';
+import Link from 'next/link';
 import { motion, useInView } from 'framer-motion';
 import {
   Wind,
@@ -16,36 +17,42 @@ const services = [
   {
     icon: Wind,
     title: 'Air Conditioning',
+    slug: 'air-conditioning',
     description:
       'Expert installation, maintenance and repair of all air conditioning systems for residential and commercial spaces.',
   },
   {
     icon: ThermometerSnowflake,
     title: 'Cold & Freezer Rooms',
+    slug: 'cold-freezer-rooms',
     description:
       'Custom cold room and freezer room solutions designed for your specific storage and temperature requirements.',
   },
   {
     icon: Wrench,
     title: 'Diagnostics & Repairs',
+    slug: 'diagnostics-repairs',
     description:
       'Professional fault finding and repair services to get your cooling systems back up and running quickly.',
   },
   {
     icon: Building2,
     title: 'Commercial Refrigeration',
+    slug: 'commercial-refrigeration',
     description:
       'Reliable refrigeration systems for supermarkets, restaurants, hotels and other commercial establishments.',
   },
   {
     icon: Car,
     title: 'Vehicle Air Conditioning',
+    slug: 'vehicle-air-conditioning',
     description:
       'Complete vehicle AC services including regassing, leak detection, compressor repairs and system diagnostics.',
   },
   {
     icon: Home,
     title: 'Domestic Refrigeration',
+    slug: 'domestic-refrigeration',
     description:
       'Keep your home cool and your food fresh with our domestic refrigerator and freezer repair services.',
   },
@@ -78,7 +85,7 @@ export default function ServicesGrid() {
 
   return (
     <section id="services" className="bg-arctic-ice-white py-20 md:py-28">
-      <div ref={ref} className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div ref={ref} className="container mx-auto px-4 sm:px-6">
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -95,13 +102,12 @@ export default function ServicesGrid() {
           </p>
         </motion.div>
 
-        {/* Services grid */
-        }
+        {/* Services grid */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2"
+          className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
         >
           {services.map((service) => {
             const Icon = service.icon;
@@ -120,13 +126,13 @@ export default function ServicesGrid() {
                 <p className="mt-1.5 text-sm text-muted-foreground">
                   {service.description}
                 </p>
-                <a
-                  href="#contact"
+                <Link
+                  href={`/services/${service.slug}`}
                   className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-arctic-ice-blue transition-transform duration-200 group-hover:translate-x-1"
                 >
                   Explore Service
                   <ArrowRight className="size-4" />
-                </a>
+                </Link>
               </motion.div>
             );
           })}

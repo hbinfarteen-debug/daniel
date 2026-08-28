@@ -1,23 +1,25 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import dynamic from 'next/dynamic';
 import ResponsiveHeader from '@/components/ResponsiveHeader';
 import HeroSection from '@/components/HeroSection';
 import EmergencyCTA from '@/components/EmergencyCTA';
-import ServicesGrid from '@/components/ServicesGrid';
-import ValueProposition from '@/components/ValueProposition';
-import ProblemSolution from '@/components/ProblemSolution';
-import IndustriesSection from '@/components/IndustriesSection';
-import WorkGallery from '@/components/WorkGallery';
-import ProcessTimeline from '@/components/ProcessTimeline';
-import ProblemSelector from '@/components/ProblemSelector';
-import AboutSection from '@/components/AboutSection';
-import TestimonialCarousel from '@/components/TestimonialCarousel';
-import FAQAccordion from '@/components/FAQAccordion';
-import FinalCTA from '@/components/FinalCTA';
 import Footer from '@/components/Footer';
 import StickyMobileCTA from '@/components/StickyMobileCTA';
-import QuoteForm from '@/components/QuoteForm';
+
+const ServicesGrid = dynamic(() => import('@/components/ServicesGrid'));
+const ValueProposition = dynamic(() => import('@/components/ValueProposition'));
+const ProblemSolution = dynamic(() => import('@/components/ProblemSolution'));
+const IndustriesSection = dynamic(() => import('@/components/IndustriesSection'));
+const WorkGallery = dynamic(() => import('@/components/WorkGallery'));
+const ProcessTimeline = dynamic(() => import('@/components/ProcessTimeline'));
+const ProblemSelector = dynamic(() => import('@/components/ProblemSelector'));
+const AboutSection = dynamic(() => import('@/components/AboutSection'));
+const TestimonialCarousel = dynamic(() => import('@/components/TestimonialCarousel'));
+const FAQAccordion = dynamic(() => import('@/components/FAQAccordion'));
+const FinalCTA = dynamic(() => import('@/components/FinalCTA'));
+const QuoteForm = dynamic(() => import('@/components/QuoteForm'));
 
 export default function PageWrapper() {
   const [quoteOpen, setQuoteOpen] = useState(false);

@@ -136,6 +136,11 @@ html {
   animation: pulse-glow 2s ease-in-out infinite;
 }
 
+/* iOS safe area bottom padding */
+.safe-area-pb {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
 /* Focus visible styles */
 :focus-visible {
   outline: 2px solid var(--arctic-ice-blue);

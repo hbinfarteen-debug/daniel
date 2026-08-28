@@ -22,7 +22,7 @@ export default function AboutSection() {
           >
             <div className="relative aspect-[3/4] rounded-lg overflow-hidden arctic-glow-strong">
               <Image
-                src="/images/about-portrait.png"
+                src="/images/about-portrait.webp"
                 alt="Professional refrigeration technician at Daniel's Arctic Touch"
                 fill
                 className="object-cover"
@@ -48,7 +48,7 @@ export default function AboutSection() {
               Daniel&apos;s Arctic Touch is a professional refrigeration and air-conditioning service provider established in 2024. We specialise in installation, diagnostics, repairs and maintenance for residential, commercial and industrial clients across Zimbabwe.
             </p>
             <p className="text-white/70 mt-3 leading-relaxed">
-              Whether it&apos;s a domestic refrigerator, a vehicle air-conditioning system, or a commercial cold room, our team delivers professional, reliable service when you need it most — 24 hours a day.
+              Whether it&apos;s a domestic refrigerator, a vehicle air-conditioning system, or a commercial cold room, our team delivers professional, reliable service when you need it most, 24 hours a day.
             </p>
 
             {/* Stats */}

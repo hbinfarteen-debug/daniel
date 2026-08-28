@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
+import { PHONE_DISPLAY } from "@/lib/constants";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -71,7 +72,7 @@ export default function RootLayout({
               name: "Daniel's Arctic Touch",
               description:
                 "Professional refrigeration and air-conditioning installation, diagnostics, repairs and maintenance.",
-              telephone: "+263 771 539 643",
+              telephone: PHONE_DISPLAY,
               email: "danryanhill18@gmail.com",
               address: {
                 "@type": "PostalAddress",

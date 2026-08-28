@@ -87,7 +87,7 @@ export default function TestimonialCarousel() {
           <div className="flex justify-center items-center gap-4 mt-8">
             <button
               onClick={prev}
-              className="w-10 h-10 rounded-full border border-arctic-soft-blue flex items-center justify-center text-arctic-deep-navy hover:bg-arctic-soft-blue/50 transition-colors cursor-pointer"
+              className="w-11 h-11 rounded-full border border-arctic-soft-blue flex items-center justify-center text-arctic-deep-navy hover:bg-arctic-soft-blue/50 transition-colors cursor-pointer"
               aria-label="Previous testimonial"
             >
               <ChevronLeft className="w-5 h-5" />
@@ -106,7 +106,7 @@ export default function TestimonialCarousel() {
             </div>
             <button
               onClick={next}
-              className="w-10 h-10 rounded-full border border-arctic-soft-blue flex items-center justify-center text-arctic-deep-navy hover:bg-arctic-soft-blue/50 transition-colors cursor-pointer"
+              className="w-11 h-11 rounded-full border border-arctic-soft-blue flex items-center justify-center text-arctic-deep-navy hover:bg-arctic-soft-blue/50 transition-colors cursor-pointer"
               aria-label="Next testimonial"
             >
               <ChevronRight className="w-5 h-5" />

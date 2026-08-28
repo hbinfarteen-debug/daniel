@@ -76,7 +76,7 @@ export default function QuoteForm({ isOpen, onClose }: { isOpen: boolean; onClos
                 <h2 className="text-lg font-semibold text-arctic-deep-navy">Request a Quote</h2>
                 <p className="text-xs text-muted-foreground mt-0.5">We&apos;ll get back to you shortly.</p>
               </div>
-              <button onClick={onClose} className="text-muted-foreground hover:text-arctic-deep-navy transition-colors cursor-pointer" aria-label="Close">
+              <button onClick={onClose} className="w-10 h-10 flex items-center justify-center rounded-md text-muted-foreground hover:text-arctic-deep-navy hover:bg-muted transition-colors cursor-pointer" aria-label="Close">
                 <X className="w-5 h-5" />
               </button>
             </div>

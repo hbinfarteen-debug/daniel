@@ -12,7 +12,7 @@ export default function ProblemSolution() {
 
   return (
     <section id="problem" className="bg-arctic-navy py-20 md:py-28">
-      <div ref={ref} className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div ref={ref} className="container mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-16">
           {/* Left — image */}
           <motion.div
@@ -30,7 +30,7 @@ export default function ProblemSolution() {
             }}
           >
             <Image
-              src="/images/technician-work.png"
+              src="/images/technician-work.webp"
               alt="Technician working on a cooling system"
               fill
               className="object-cover"

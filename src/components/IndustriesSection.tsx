@@ -61,7 +61,7 @@ export default function IndustriesSection() {
 
   return (
     <section id="industries" className="bg-arctic-ice-white py-20 md:py-28">
-      <div ref={ref} className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div ref={ref} className="container mx-auto px-4 sm:px-6">
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -79,7 +79,7 @@ export default function IndustriesSection() {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2"
+          className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4"
         >
           {categories.map((category) => {
             const Icon = category.icon;

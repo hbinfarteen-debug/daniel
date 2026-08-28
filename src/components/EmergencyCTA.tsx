@@ -4,6 +4,7 @@ import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Phone, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { waUrl, WA_DEFAULT_MESSAGE } from '@/lib/constants';
 
 export default function EmergencyCTA() {
   const ref = useRef<HTMLDivElement>(null);
@@ -18,7 +19,7 @@ export default function EmergencyCTA() {
         initial={{ opacity: 0, y: 24 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
         transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-        className="mx-auto flex max-w-7xl flex-col items-center gap-8 px-4 py-8 sm:px-6 md:flex-row md:justify-between md:gap-12 lg:px-8 lg:py-10"
+        className="container mx-auto flex flex-col items-center gap-8 px-10 py-10 md:px-20 md:flex-row md:justify-between md:gap-12 lg:py-12"
       >
         {/* Left side - copy */}
         <div className="flex flex-col items-center text-center md:items-start md:text-left">
@@ -38,14 +39,14 @@ export default function EmergencyCTA() {
         </div>
 
         {/* Right side — WhatsApp primary, Call secondary */}
-        <div className="flex flex-col items-center gap-3 sm:flex-row md:items-end">
+        <div className="flex flex-col items-center gap-4 sm:flex-row md:items-end">
           <Button
             size="lg"
-            className="pulse-glow flex items-center gap-2 bg-[#25D366] px-6 py-6 text-base font-semibold text-white hover:bg-[#20bd5a] sm:px-8 sm:text-lg rounded-sm shadow-lg shadow-[#25D366]/25"
+            className="flex items-center gap-2 bg-[#25D366] px-8 py-4 min-w-[200px] text-base font-semibold text-white hover:bg-[#20bd5a] rounded-sm shadow-lg shadow-[#25D366]/25"
             asChild
           >
             <a
-              href="https://wa.me/263771539643?text=Hi%20Daniel's%20Arctic%20Touch%2C%20I%20need%20urgent%20assistance%20with%20my%20cooling%20system."
+              href={waUrl("Hi Daniel's Arctic Touch, I need urgent assistance with my cooling system.")}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -56,7 +57,7 @@ export default function EmergencyCTA() {
           <Button
             size="lg"
             variant="outline"
-            className="flex items-center gap-2 border-white/20 bg-white/5 px-6 py-6 text-base font-semibold text-white hover:bg-white/10 hover:border-white/40 sm:px-8 sm:text-lg rounded-sm"
+            className="flex items-center gap-2 border-white/20 bg-white/5 px-8 py-4 min-w-[200px] text-base font-semibold text-white hover:bg-white/10 hover:border-white/40 rounded-sm"
             asChild
           >
             <a href="tel:+263771539643">

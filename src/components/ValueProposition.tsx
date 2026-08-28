@@ -57,7 +57,7 @@ export default function ValueProposition() {
 
   return (
     <section id="value" className="bg-arctic-deep-navy py-20 md:py-28">
-      <div ref={ref} className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div ref={ref} className="container mx-auto px-4 sm:px-6">
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}

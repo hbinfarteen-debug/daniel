@@ -6,12 +6,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const galleryItems = [
-  { src: '/images/hero-bg.png', alt: 'Modern air conditioning installation in commercial office', category: 'Air Conditioning' },
-  { src: '/images/cold-room.png', alt: 'Commercial cold room with LED lighting', category: 'Cold Rooms' },
-  { src: '/images/technician-work.png', alt: 'Technician servicing commercial refrigeration unit', category: 'Repairs' },
-  { src: '/images/gallery-ac-install.png', alt: 'Rooftop AC unit installation at dusk', category: 'Air Conditioning' },
-  { src: '/images/vehicle-ac.png', alt: 'Vehicle air conditioning system servicing', category: 'Vehicle AC' },
-  { src: '/images/about-portrait.png', alt: 'Professional technician in workshop', category: 'Commercial' },
+  { src: '/images/hero-bg.webp', alt: 'Modern air conditioning installation in commercial office', category: 'Air Conditioning' },
+  { src: '/images/cold-room.webp', alt: 'Commercial cold room with LED lighting', category: 'Cold Rooms' },
+  { src: '/images/technician-work.webp', alt: 'Technician servicing commercial refrigeration unit', category: 'Repairs' },
+  { src: '/images/gallery-ac-install.webp', alt: 'Rooftop AC unit installation at dusk', category: 'Air Conditioning' },
+  { src: '/images/vehicle-ac.webp', alt: 'Vehicle air conditioning system servicing', category: 'Vehicle AC' },
+  { src: '/images/about-portrait.webp', alt: 'Professional technician in workshop', category: 'Commercial' },
 ];
 
 const filters = ['All', 'Air Conditioning', 'Cold Rooms', 'Commercial', 'Repairs', 'Vehicle AC'];
@@ -47,7 +47,7 @@ export default function WorkGallery() {
             <button
               key={f}
               onClick={() => setActiveFilter(f)}
-              className={`px-4 py-2 rounded-full text-xs sm:text-sm font-medium tracking-wide transition-all duration-300 cursor-pointer ${
+              className={`px-4 py-2.5 rounded-full text-xs sm:text-sm font-medium tracking-wide transition-all duration-300 cursor-pointer min-h-[44px] ${
                 activeFilter === f
                   ? 'bg-arctic-ice-blue text-white'
                   : 'bg-white/5 text-white/60 border border-white/10 hover:border-arctic-ice-blue/30 hover:text-white'
@@ -110,17 +110,17 @@ export default function WorkGallery() {
             </button>
             <button
               onClick={(e) => { e.stopPropagation(); prev(); }}
-              className="absolute left-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-colors z-10 cursor-pointer"
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white/80 hover:text-white hover:bg-white/20 transition-colors z-10 cursor-pointer"
               aria-label="Previous image"
             >
-              <ChevronLeft className="w-10 h-10" />
+              <ChevronLeft className="w-6 h-6" />
             </button>
             <button
               onClick={(e) => { e.stopPropagation(); next(); }}
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-colors z-10 cursor-pointer"
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white/80 hover:text-white hover:bg-white/20 transition-colors z-10 cursor-pointer"
               aria-label="Next image"
             >
-              <ChevronRight className="w-10 h-10" />
+              <ChevronRight className="w-6 h-6" />
             </button>
             <motion.div
               key={lightboxIndex}

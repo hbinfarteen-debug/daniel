@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { X, MessageCircle, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { waUrl, WA_DEFAULT_MESSAGE } from '@/lib/constants';
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -57,7 +58,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             {/* Logo + Close button */}
             <div className="flex items-center justify-between p-6 pb-4">
               <Image
-                src="/images/logo.png"
+                src="/images/logo.webp"
                 alt="Daniel's Arctic Touch logo"
                 width={120}
                 height={36}
@@ -99,7 +100,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                 className="h-12 w-full bg-green-600 text-base font-semibold text-white hover:bg-green-700"
               >
                 <a
-                  href="https://wa.me/263771539643?text=Hi%20Daniel's%20Arctic%20Touch%2C%20I%20would%20like%20assistance."
+                  href={waUrl(WA_DEFAULT_MESSAGE)}
                   target="_blank"
                   rel="noopener noreferrer"
                 >

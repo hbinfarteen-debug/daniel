@@ -57,7 +57,7 @@ export default function ProcessTimeline() {
               transition={{ duration: 0.5, delay: idx * 0.1 }}
               className="relative pb-10 last:pb-0"
             >
-              <div className="absolute left-[-1.65rem] top-0.5 w-7 h-7 rounded-full bg-arctic-deep-navy flex items-center justify-center z-10">
+              <div className="absolute left-[-1.75rem] top-0.5 w-8 h-8 rounded-full bg-arctic-deep-navy flex items-center justify-center z-10">
                 <span className="text-xs font-bold text-arctic-ice-blue">{step.number}</span>
               </div>
               <h3 className="text-lg font-semibold text-arctic-deep-navy">{step.title}</h3>
