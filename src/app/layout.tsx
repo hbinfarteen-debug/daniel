@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Daniel's Arctic Touch" }],
   icons: {
-    icon: "/logo.svg",
+    icon: "/favicon.svg",
   },
   openGraph: {
     title: "Daniel's Arctic Touch | Refrigeration & Air Conditioning",

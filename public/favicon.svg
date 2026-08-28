@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <defs>
+    <linearGradient id="frostGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4AB5FF"/>
+      <stop offset="50%" stop-color="#168FFF"/>
+      <stop offset="100%" stop-color="#00D4FF"/>
+    </linearGradient>
+    <filter id="frostGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Frost crystal / snowflake shape -->
+  <g filter="url(#frostGlow)">
+    <!-- Central hexagon -->
+    <polygon points="16,4 22,7 22,13 16,16 10,13 10,7" fill="url(#frostGrad)" stroke="#fff" stroke-width="0.5" opacity="0.9"/>
+    
+    <!-- Outer arms -->
+    <g stroke="url(#frostGrad)" stroke-width="1.5" stroke-linecap="round">
+      <!-- Top -->
+      <line x1="16" y1="4" x2="16" y2="0"/>
+      <line x1="14" y1="2" x2="12" y2="0"/>
+      <line x1="18" y1="2" x2="20" y2="0"/>
+      
+      <!-- Bottom -->
+      <line x1="16" y1="28" x2="16" y2="32"/>
+      <line x1="14" y1="30" x2="12" y2="32"/>
+      <line x1="18" y1="30" x2="20" y2="32"/>
+      
+      <!-- Left -->
+      <line x1="4" y1="16" x2="0" y2="16"/>
+      <line x1="2" y1="14" x2="0" y2="12"/>
+      <line x1="2" y1="18" x2="0" y2="20"/>
+      
+      <!-- Right -->
+      <line x1="28" y1="16" x2="32" y2="16"/>
+      <line x1="30" y1="14" x2="32" y2="12"/>
+      <line x1="30" y1="18" x2="32" y2="20"/>
+      
+      <!-- Diagonals -->
+      <line x1="7" y1="7" x2="4" y2="4"/>
+      <line x1="5" y1="9" x2="3" y2="11"/>
+      <line x1="9" y1="5" x2="11" y2="3"/>
+      
+      <line x1="25" y1="7" x2="28" y2="4"/>
+      <line x1="23" y1="9" x2="21" y2="11"/>
+      <line x1="27" y1="5" x2="29" y2="3"/>
+      
+      <line x1="7" y1="25" x2="4" y2="28"/>
+      <line x1="5" y1="23" x2="3" y2="21"/>
+      <line x1="9" y1="27" x2="11" y2="29"/>
+      
+      <line x1="25" y1="25" x2="28" y2="28"/>
+      <line x1="23" y1="23" x2="21" y2="21"/>
+      <line x1="27" y1="27" x2="29" y2="29"/>
+    </g>
+    
+    <!-- Inner diamond accents -->
+    <polygon points="16,10 19,13 16,16 13,13" fill="url(#frostGrad)" opacity="0.6"/>
+    <polygon points="16,12 17.5,13.5 16,15 14.5,13.5" fill="#fff" opacity="0.8"/>
+  </g>
+</svg>
