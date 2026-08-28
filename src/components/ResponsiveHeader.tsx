@@ -22,7 +22,7 @@ const SCROLL_THRESHOLD = 50;
 export default function ResponsiveHeader() {
   const pathname = usePathname();
   const isHome = pathname === '/';
-  const [isScrolled, setIsScrolled] = useState(() => typeof window !== 'undefined' && window.scrollY > SCROLL_THRESHOLD);
+  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleScroll = useCallback(() => {
@@ -30,6 +30,7 @@ export default function ResponsiveHeader() {
   }, []);
 
   useEffect(() => {
+    setIsScrolled(window.scrollY > SCROLL_THRESHOLD);
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, [handleScroll]);
