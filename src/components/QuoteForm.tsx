@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Send, CheckCircle2, Loader2 } from 'lucide-react';
+import { X, Send, CheckCircle2, Loader2, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -14,6 +14,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+
+const CONTACT_EMAIL = 'daniel@arctictouch.co.zw';
 
 const services = [
   'Air Conditioning',
@@ -28,26 +30,26 @@ const services = [
 
 export default function QuoteForm({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
   const [form, setForm] = useState({ name: '', phone: '', email: '', service: '', message: '' });
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const [errorMsg, setErrorMsg] = useState('');
+  const [status, setStatus] = useState<'idle' | 'success'>('idle');
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name || !form.phone || !form.service) return;
 
-    setStatus('loading');
-    try {
-      const res = await fetch(process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT!, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
-      });
-      if (!res.ok) throw new Error('Failed');
-      setStatus('success');
-    } catch {
-      setStatus('error');
-      setErrorMsg('Something went wrong. Please try WhatsApp or phone instead.');
-    }
+    const subject = `Quote Request: ${form.service}`;
+    const body = `
+Name: ${form.name}
+Phone: ${form.phone}
+Email: ${form.email || 'Not provided'}
+Service: ${form.service}
+
+Message:
+${form.message || 'No additional details'}
+    `.trim();
+
+    const mailtoLink = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoLink;
+    setStatus('success');
   };
 
   const update = (field: string, value: string) => setForm(prev => ({ ...prev, [field]: value }));
@@ -74,7 +76,7 @@ export default function QuoteForm({ isOpen, onClose }: { isOpen: boolean; onClos
             <div className="sticky top-0 bg-white border-b border-arctic-soft-blue/50 p-5 flex items-center justify-between rounded-t-xl z-10">
               <div>
                 <h2 className="text-lg font-semibold text-arctic-deep-navy">Request a Quote</h2>
-                <p className="text-xs text-muted-foreground mt-0.5">We&apos;ll get back to you shortly.</p>
+                <p className="text-xs text-muted-foreground mt-0.5">Opens your email app with details pre-filled.</p>
               </div>
               <button onClick={onClose} className="w-10 h-10 flex items-center justify-center rounded-md text-muted-foreground hover:text-arctic-deep-navy hover:bg-muted transition-colors cursor-pointer" aria-label="Close">
                 <X className="w-5 h-5" />
@@ -84,8 +86,8 @@ export default function QuoteForm({ isOpen, onClose }: { isOpen: boolean; onClos
             {status === 'success' ? (
               <div className="p-8 text-center">
                 <CheckCircle2 className="w-16 h-16 text-green-500 mx-auto" />
-                <h3 className="text-lg font-semibold text-arctic-deep-navy mt-4">Thank you.</h3>
-                <p className="text-sm text-muted-foreground mt-2">Your enquiry has been received. Daniel&apos;s Arctic Touch will get back to you shortly.</p>
+                <h3 className="text-lg font-semibold text-arctic-deep-navy mt-4">Email opened.</h3>
+                <p className="text-sm text-muted-foreground mt-2">Send the email from your email app. We&apos;ll get back to you shortly.</p>
                 <Button onClick={onClose} variant="outline" className="mt-6">Close</Button>
               </div>
             ) : (
@@ -116,11 +118,9 @@ export default function QuoteForm({ isOpen, onClose }: { isOpen: boolean; onClos
                   <Textarea id="q-message" placeholder="Tell us what you need help with..." rows={3} value={form.message} onChange={(e) => update('message', e.target.value)} />
                 </div>
 
-                {status === 'error' && <p className="text-sm text-red-500">{errorMsg}</p>}
-
-                <Button type="submit" disabled={status === 'loading'} className="w-full bg-arctic-ice-blue hover:bg-arctic-electric-blue text-white gap-2 h-11">
-                  {status === 'loading' ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
-                  Request a Quote
+                <Button type="submit" className="w-full bg-arctic-ice-blue hover:bg-arctic-electric-blue text-white gap-2 h-11">
+                  <Mail className="w-4 h-4" />
+                  Open Email App
                 </Button>
               </form>
             )}
