@@ -3,41 +3,31 @@
 import Image from 'next/image';
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { MessageCircle } from 'lucide-react';
+import { MessageCircle, Phone, Clock, Wrench, Settings, ShieldCheck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-const BADGES = ['24HR SUPPORT', 'INSTALLATION', 'REPAIRS', 'MAINTENANCE'];
-
-const ICE_PARTICLES = [
-  { left: '8%',  size: 2, opacity: 0.3, delay: 0,    duration: 18 },
-  { left: '15%', size: 1, opacity: 0.5, delay: 3,    duration: 22 },
-  { left: '22%', size: 3, opacity: 0.2, delay: 1.5,  duration: 20 },
-  { left: '35%', size: 2, opacity: 0.4, delay: 5,    duration: 16 },
-  { left: '48%', size: 1, opacity: 0.6, delay: 2,    duration: 24 },
-  { left: '58%', size: 2, opacity: 0.25, delay: 7,   duration: 19 },
-  { left: '70%', size: 3, opacity: 0.2, delay: 4,    duration: 21 },
-  { left: '78%', size: 1, opacity: 0.5, delay: 6,    duration: 17 },
-  { left: '85%', size: 2, opacity: 0.35, delay: 1,   duration: 23 },
-  { left: '92%', size: 1, opacity: 0.4, delay: 8,    duration: 20 },
+const TRUST_ITEMS = [
+  { icon: Clock, label: '24HR ASSISTANCE' },
+  { icon: Wrench, label: 'PROFESSIONAL REPAIRS' },
+  { icon: Settings, label: 'INSTALLATION & MAINTENANCE' },
+  { icon: ShieldCheck, label: 'RESIDENTIAL & COMMERCIAL' },
 ];
 
-const containerVariants = {
+const WA_URL = 'https://wa.me/263771539643?text=Hi%20Daniel%27s%20Arctic%20Touch%2C%20I%20need%20assistance%20with%20my%20cooling%2Frefrigeration%20system.%20Please%20let%20me%20know%20how%20I%20can%20arrange%20a%20service.';
+
+const stagger = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.3,
-    },
+    transition: { staggerChildren: 0.12, delayChildren: 0.4 },
   },
 };
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
   visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] as const },
+    opacity: 1, y: 0,
+    transition: { duration: 0.65, ease: [0.22, 0.61, 0.36, 1] as const },
   },
 };
 
@@ -48,137 +38,144 @@ export default function HeroSection() {
     offset: ['start start', 'end start'],
   });
 
-  const contentY = useTransform(scrollYProgress, [0, 1], [0, 80]);
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
+  const contentY = useTransform(scrollYProgress, [0, 1], [0, 60]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   return (
     <section
       id="home"
       ref={sectionRef}
-      className="relative h-[85vh] w-full overflow-hidden sm:h-screen"
+      className="relative w-full overflow-hidden min-h-[720px] h-[88vh] md:h-[88vh]"
     >
-      {/* Background image with slow cinematic scale */}
+      {/* Background image — slow cinematic parallax */}
       <motion.div
         className="absolute inset-0"
-        animate={{ scale: [1, 1.05] }}
-        transition={{ duration: 30, ease: 'linear', repeat: Infinity, repeatType: 'reverse' }}
+        animate={{ scale: [1, 1.04] }}
+        transition={{ duration: 25, ease: 'linear', repeat: Infinity, repeatType: 'reverse' }}
       >
         <Image
-          src="/images/hero-bg.png"
-          alt="Professional refrigeration and air conditioning service"
+          src="/images/hero-v2.png"
+          alt="Professional refrigeration technician servicing an air conditioning system"
           fill
-          className="object-cover object-center"
+          className="object-cover object-right md:object-center"
           priority
           sizes="100vw"
         />
       </motion.div>
 
-      {/* Dark gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-arctic-deep-navy/80 via-arctic-deep-navy/60 to-transparent" />
+      {/* Strong left-to-right navy gradient for text readability */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#071B43]/95 via-[#071B43]/75 to-[#071B43]/30 md:via-[#071B43]/60" />
+      {/* Bottom fade for smooth transition to next section */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#071B43]/60 to-transparent" />
 
-      {/* Ice particles */}
-      {ICE_PARTICLES.map((p, i) => (
+      {/* Very subtle ice particles — minimal, not a snow scene */}
+      {[0,1,2,3,4].map(i => (
         <div
           key={i}
           className="ice-particle absolute bottom-0 rounded-full bg-white"
           style={{
-            left: p.left,
-            width: p.size,
-            height: p.size,
-            opacity: p.opacity,
-            animationDelay: `${p.delay}s`,
-            animationDuration: `${p.duration}s`,
+            left: `${12 + i * 20}%`,
+            width: 1 + (i % 2),
+            height: 1 + (i % 2),
+            opacity: 0.15 + (i * 0.05),
+            animationDelay: `${i * 3}s`,
+            animationDuration: `${20 + i * 3}s`,
           }}
         />
       ))}
 
-      {/* Subtle blue ambient glow at bottom */}
-      <div
-        className="pointer-events-none absolute bottom-0 left-1/2 h-1/3 w-full -translate-x-1/2"
-        style={{
-          background: 'radial-gradient(ellipse at center bottom, rgba(22,139,255,0.12) 0%, transparent 70%)',
-        }}
-      />
-
-      {/* Main content */}
+      {/* Content — left-aligned, conversion-focused */}
       <motion.div
         style={{ y: contentY, opacity: contentOpacity }}
-        className="relative z-10 flex h-full items-center justify-center px-4 sm:px-6 lg:px-8"
+        className="relative z-10 flex h-full items-center px-5 sm:px-8 md:px-12 lg:px-16 xl:px-20"
       >
         <motion.div
-          variants={containerVariants}
+          variants={stagger}
           initial="hidden"
           animate="visible"
-          className="flex max-w-4xl flex-col items-center text-center"
+          className="w-full max-w-[600px]"
         >
-          {/* Eyebrow with horizontal lines */}
-          <motion.div variants={itemVariants} className="flex items-center gap-3">
-            <span className="h-px w-6 sm:w-10 bg-arctic-electric-blue/60" />
-            <span className="text-xs tracking-[0.3em] font-medium text-arctic-electric-blue sm:text-sm">
-              DANIEL&apos;S ARCTIC TOUCH
-            </span>
-            <span className="h-px w-6 sm:w-10 bg-arctic-electric-blue/60" />
-          </motion.div>
-
-          {/* Headline */}
-          <motion.h1
-            variants={itemVariants}
-            className="mt-4 max-w-4xl text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl lg:text-6xl"
-          >
-            REFRIGERATION &amp; AIR CONDITIONING, DONE RIGHT.
-          </motion.h1>
-
-          {/* Subheadline */}
+          {/* Eyebrow — local relevance */}
           <motion.p
-            variants={itemVariants}
-            className="mt-4 max-w-2xl text-base text-white/80 sm:text-lg"
+            variants={fadeUp}
+            className="text-xs font-semibold tracking-[0.25em] text-[#168FFF] sm:text-sm"
           >
-            Professional installation, diagnostics, repairs and maintenance for
-            homes, vehicles and businesses.
+            PROFESSIONAL COOLING SERVICES &bull; BULAWAYO
           </motion.p>
 
-          {/* Badges row */}
-          <motion.div
-            variants={itemVariants}
-            className="mt-6 flex flex-wrap items-center justify-center gap-2 sm:gap-3"
+          {/* Headline — problem + solution */}
+          <motion.h1
+            variants={fadeUp}
+            className="mt-3 text-[clamp(2.5rem,11vw,4rem)] font-[800] leading-[0.98] text-white sm:mt-4 sm:text-[clamp(3rem,5vw,5.2rem)] sm:leading-[1.02]"
           >
-            {BADGES.map((badge) => (
-              <span
-                key={badge}
-                className="frost-border rounded-full px-3 py-1 text-xs tracking-wider text-arctic-electric-blue"
-              >
-                {badge}
-              </span>
-            ))}
-          </motion.div>
+            WHEN THE COOLING
+            <br />
+            STOPS,{' '}
+            <span className="text-[#4AB5FF]">CALL THE EXPERTS.</span>
+          </motion.h1>
 
-          {/* CTA buttons */}
-          <motion.div
-            variants={itemVariants}
-            className="mt-8 flex flex-col items-center gap-3 sm:flex-row"
+          {/* Subheadline — clear value */}
+          <motion.p
+            variants={fadeUp}
+            className="mt-4 max-w-[580px] text-[17px] leading-relaxed text-white/75 sm:mt-5 sm:text-lg sm:leading-[1.6]"
           >
+            Air conditioning, refrigeration and cold-room solutions — from
+            installation and repairs to ongoing maintenance.
+          </motion.p>
+
+          {/* CTA buttons — WhatsApp PRIMARY */}
+          <motion.div
+            variants={fadeUp}
+            className="mt-7 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:gap-4"
+          >
+            {/* Primary — WhatsApp */}
             <Button
-              size="lg"
-              className="bg-arctic-ice-blue px-8 py-3.5 text-base font-semibold text-white hover:bg-arctic-electric-blue rounded-sm"
-              onClick={() => window.dispatchEvent(new CustomEvent('open-quote'))}
-            >
-              Get a Quote
-            </Button>
-            <Button
-              size="lg"
-              className="border border-white/30 px-8 py-3.5 text-base font-semibold text-white bg-transparent hover:bg-white/10 hover:text-white rounded-sm"
               asChild
+              size="lg"
+              className="group h-13 w-full gap-2.5 bg-[#168FFF] px-7 text-[15px] font-semibold text-white shadow-lg shadow-[#168FFF]/25 transition-all duration-300 hover:bg-[#4AB5FF] hover:shadow-xl hover:shadow-[#4AB5FF]/30 sm:h-14 sm:w-auto sm:px-9 sm:text-base"
             >
               <a
-                href="https://wa.me/263771539643?text=Hi%20Daniel%27s%20Arctic%20Touch%2C%20I%27d%20like%20to%20get%20a%20quote."
+                href={WA_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2"
+                className="flex items-center gap-2.5"
               >
-                <MessageCircle className="size-4" />
-                WhatsApp Us
+                <svg className="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg>
+                WHATSAPP A TECHNICIAN
+                <span className="hidden text-xs font-normal text-white/60 sm:inline ml-1">— Fast response</span>
               </a>
             </Button>
+
+            {/* Secondary — Call */}
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="group h-13 w-full gap-2.5 border-white/25 bg-white/5 px-7 text-[15px] font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:border-white/50 hover:bg-white/10 sm:h-14 sm:w-auto sm:px-8 sm:text-base"
+            >
+              <a href="tel:+263771539643" className="flex items-center gap-2.5">
+                <Phone className="h-5 w-5" />
+                CALL NOW
+              </a>
+            </Button>
+          </motion.div>
+
+          {/* Trust strip */}
+          <motion.div
+            variants={fadeUp}
+            className="mt-8 hidden border-t border-white/10 pt-6 sm:mt-10 sm:block"
+          >
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+              {TRUST_ITEMS.map((item, idx) => (
+                <span key={item.label} className="flex items-center gap-1.5 text-[11px] tracking-wider text-white/50">
+                  <item.icon className="h-3.5 w-3.5 text-[#168FFF]/70" strokeWidth={1.5} />
+                  {item.label}
+                  {idx < TRUST_ITEMS.length - 1 && <span className="ml-1 hidden text-white/15 md:inline">|</span>}
+                </span>
+              ))}
+            </div>
           </motion.div>
         </motion.div>
       </motion.div>

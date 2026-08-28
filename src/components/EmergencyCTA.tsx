@@ -37,21 +37,11 @@ export default function EmergencyCTA() {
           </p>
         </div>
 
-        {/* Right side - CTAs */}
+        {/* Right side — WhatsApp primary, Call secondary */}
         <div className="flex flex-col items-center gap-3 sm:flex-row md:items-end">
           <Button
             size="lg"
-            className="pulse-glow flex items-center gap-2 bg-arctic-ice-blue px-6 py-6 text-base font-semibold text-white hover:bg-arctic-electric-blue sm:px-8 sm:text-lg rounded-sm"
-            asChild
-          >
-            <a href="tel:+263771539643">
-              <Phone className="size-5" />
-              Call +263 771 539 643
-            </a>
-          </Button>
-          <Button
-            size="lg"
-            className="flex items-center gap-2 bg-[#25D366] px-6 py-6 text-base font-semibold text-white hover:bg-[#20bd5a] sm:px-8 sm:text-lg rounded-sm"
+            className="pulse-glow flex items-center gap-2 bg-[#25D366] px-6 py-6 text-base font-semibold text-white hover:bg-[#20bd5a] sm:px-8 sm:text-lg rounded-sm shadow-lg shadow-[#25D366]/25"
             asChild
           >
             <a
@@ -61,6 +51,17 @@ export default function EmergencyCTA() {
             >
               <MessageCircle className="size-5" />
               WhatsApp Us
+            </a>
+          </Button>
+          <Button
+            size="lg"
+            variant="outline"
+            className="flex items-center gap-2 border-white/20 bg-white/5 px-6 py-6 text-base font-semibold text-white hover:bg-white/10 hover:border-white/40 sm:px-8 sm:text-lg rounded-sm"
+            asChild
+          >
+            <a href="tel:+263771539643">
+              <Phone className="size-5" />
+              Call +263 771 539 643
             </a>
           </Button>
         </div>
