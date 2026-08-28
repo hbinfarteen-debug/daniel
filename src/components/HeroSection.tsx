@@ -57,7 +57,7 @@ export default function HeroSection() {
           src="/images/hero-v2.webp"
           alt="Professional refrigeration technician servicing an air conditioning system"
           fill
-          className="object-cover object-right md:object-center"
+          className="object-cover object-center md:object-right"
           priority
           sizes="100vw"
         />
