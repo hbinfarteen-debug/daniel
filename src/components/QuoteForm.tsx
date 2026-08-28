@@ -105,8 +105,8 @@ export default function QuoteForm({ isOpen, onClose }: { isOpen: boolean; onClos
                 <div className="space-y-1.5">
                   <Label htmlFor="q-service">Service Required *</Label>
                   <Select value={form.service} onValueChange={(v) => update('service', v)}>
-                    <SelectTrigger id="q-service"><SelectValue placeholder="Select a service" /></SelectTrigger>
-                    <SelectContent>
+                    <SelectTrigger id="q-service" className="w-full"><SelectValue placeholder="Select a service" /></SelectTrigger>
+                    <SelectContent className="z-[80]">
                       {services.map(s => <SelectItem key={s} value={s}>{s}</SelectItem>)}
                     </SelectContent>
                   </Select>
